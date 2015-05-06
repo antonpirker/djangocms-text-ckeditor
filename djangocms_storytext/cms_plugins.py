@@ -18,7 +18,7 @@ class StoryTextPlugin(CMSPluginBase):
     model = StoryText
     name = _("Story Text")
     form = TextForm
-    render_template = "cms/plugins/text.html"
+    render_template = "cms/plugins/storytext.html"
     change_form_template = "cms/plugins/text_plugin_change_form.html"
     ckeditor_configuration = TEXT_CKEDITOR_CONFIGURATION
 
