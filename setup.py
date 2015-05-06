@@ -34,7 +34,7 @@ setup(
     author='Divio AG',
     author_email='info@divio.ch',
     url='https://github.com/divio/djangocms-text-ckeditor',
-    packages=['djangocms_storytext', 'djangocms_storytext.migrations', 'djangocms_storytext.south_migrations'],
+    packages=['djangocms_storytext', 'djangocms_storytext.migrations'],
     install_requires=INSTALL_REQUIRES,
     license='LICENSE.txt',
     platforms=['OS Independent'],
