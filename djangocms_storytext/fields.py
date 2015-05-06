@@ -5,7 +5,7 @@ from .widgets import TextEditorWidget
 
 try:
     from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ['^djangocms_text_ckeditor\.fields\.HTMLField'])
+    add_introspection_rules([], ['^djangocms_storytext\.fields\.HTMLField'])
 except ImportError:
     pass
 

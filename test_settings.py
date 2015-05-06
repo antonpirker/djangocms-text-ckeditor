@@ -81,7 +81,7 @@ if LooseVersion(django.get_version()) < LooseVersion('1.6'):
 def run():
     import sys
     from djangocms_helper import runner
-    runner.cms('djangocms_text_ckeditor')
+    runner.cms('djangocms_storytext')
 
 if __name__ == "__main__":
     run()

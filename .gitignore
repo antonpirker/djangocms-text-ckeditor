@@ -7,7 +7,7 @@
 build
 env*
 dist
-djangocms_text_ckeditor.egg-info
+djangocms_storytext.egg-info
 *.DS_Store
 .idea
 .tox

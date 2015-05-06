@@ -90,7 +90,7 @@ $(document).ready(function () {
 
 		_isAloneInModal: function () {
 			// return true if the ckeditor is alone in a modal popup
-			return this.container.parents('body.djangocms_text_ckeditor-text').length > 0;
+			return this.container.parents('body.djangocms_storytext-text').length > 0;
 		}
 
 	};

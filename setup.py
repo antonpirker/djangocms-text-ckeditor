@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from setuptools import setup
-from djangocms_text_ckeditor import __version__
+from djangocms_storytext import __version__
 
 
 INSTALL_REQUIRES = [
@@ -34,7 +34,7 @@ setup(
     author='Divio AG',
     author_email='info@divio.ch',
     url='https://github.com/divio/djangocms-text-ckeditor',
-    packages=['djangocms_text_ckeditor', 'djangocms_text_ckeditor.migrations', 'djangocms_text_ckeditor.south_migrations'],
+    packages=['djangocms_storytext', 'djangocms_storytext.migrations', 'djangocms_storytext.south_migrations'],
     install_requires=INSTALL_REQUIRES,
     license='LICENSE.txt',
     platforms=['OS Independent'],

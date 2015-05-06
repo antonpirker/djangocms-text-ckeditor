@@ -16,7 +16,7 @@ from .forms import TextForm
 
 class TextPlugin(CMSPluginBase):
     model = Text
-    name = _("Text")
+    name = _("Story Text")
     form = TextForm
     render_template = "cms/plugins/text.html"
     change_form_template = "cms/plugins/text_plugin_change_form.html"
