@@ -28,12 +28,12 @@ CLASSIFIERS = [
 ]
 
 setup(
-    name='djangocms-text-ckeditor',
+    name='djangocms-storytext',
     version=__version__,
     description='Text Plugin for django CMS with CKEditor support',
     author='Divio AG',
     author_email='info@divio.ch',
-    url='https://github.com/divio/djangocms-text-ckeditor',
+    url='https://github.com/antonpirker/djangocms-text-ckeditor',
     packages=['djangocms_storytext', 'djangocms_storytext.migrations'],
     install_requires=INSTALL_REQUIRES,
     license='LICENSE.txt',
