@@ -140,7 +140,7 @@ class AbstractText(CMSPlugin):
         self.save()
 
 
-class Text(AbstractText):
+class StoryText(AbstractText):
 
     class Meta:
         abstract = False

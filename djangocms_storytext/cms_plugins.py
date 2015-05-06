@@ -9,13 +9,13 @@ from cms.utils.urlutils import admin_reverse
 
 from .settings import TEXT_CKEDITOR_CONFIGURATION
 from .widgets import TextEditorWidget
-from .models import Text
+from .models import StoryText
 from .utils import plugin_tags_to_user_html
 from .forms import TextForm
 
 
-class TextPlugin(CMSPluginBase):
-    model = Text
+class StoryTextPlugin(CMSPluginBase):
+    model = StoryText
     name = _("Story Text")
     form = TextForm
     render_template = "cms/plugins/text.html"
@@ -38,14 +38,14 @@ class TextPlugin(CMSPluginBase):
         Returns a subclass of Form to be used by this plugin
         """
         # We avoid mutating the Form declared above by subclassing
-        class TextPluginForm(self.form):
+        class StoryTextPluginForm(self.form):
             pass
 
         widget = self.get_editor_widget(request, plugins, pk, placeholder, language)
-        TextPluginForm.declared_fields["body"] = CharField(
+        StoryTextPluginForm.declared_fields["body"] = CharField(
             widget=widget, required=False
         )
-        return TextPluginForm
+        return StoryTextPluginForm
 
     def add_view(self, request, form_url='', extra_context=None):
         """
@@ -59,19 +59,19 @@ class TextPlugin(CMSPluginBase):
         """
         if not hasattr(self, 'add_view_check_request'):
             # pre 3.1 compatiblity
-            return super(TextPlugin, self).add_view(
+            return super(StoryTextPlugin, self).add_view(
                 request, form_url, extra_context
             )
         result = self.add_view_check_request(request)
         if isinstance(result, HttpResponse):
             return result
-        text = Text.objects.create(
+        text = StoryText.objects.create(
             language=request.GET['plugin_language'],
             placeholder_id=request.GET['placeholder_id'],
             parent_id = request.GET.get(
                 'plugin_parent', None
             ),
-            plugin_type='TextPlugin',
+            plugin_type='StoryTextPlugin',
             body=''
         )
         return HttpResponseRedirect(
@@ -87,7 +87,7 @@ class TextPlugin(CMSPluginBase):
         form = self.get_form_class(request, plugins, pk, self.cms_plugin_instance.placeholder,
                                    self.cms_plugin_instance.language)
         kwargs['form'] = form  # override standard form
-        return super(TextPlugin, self).get_form(request, obj, **kwargs)
+        return super(StoryTextPlugin, self).get_form(request, obj, **kwargs)
 
     def render_change_form(self, request, context, add=False, change=False, form_url='', obj=None):
         """
@@ -96,7 +96,7 @@ class TextPlugin(CMSPluginBase):
         """
         if cms_version.startswith('2'):
             context['change_form_template'] = "admin/cms/page/plugin_change_form.html"
-        return super(TextPlugin, self).render_change_form(request, context, add, change, form_url, obj)
+        return super(StoryTextPlugin, self).render_change_form(request, context, add, change, form_url, obj)
 
     def render(self, context, instance, placeholder):
         context.update({
@@ -111,7 +111,7 @@ class TextPlugin(CMSPluginBase):
         return context
 
     def save_model(self, request, obj, form, change):
-        super(TextPlugin, self).save_model(request, obj, form, change)
+        super(StoryTextPlugin, self).save_model(request, obj, form, change)
         # This must come after calling save
         # If `clean_plugins()` deletes child plugins, django-treebeard will call
         # save() again on the Text instance (aka obj in this context) to update mptt values (numchild, etc).
@@ -119,4 +119,4 @@ class TextPlugin(CMSPluginBase):
         obj.clean_plugins()
 
 
-plugin_pool.register_plugin(TextPlugin)
+plugin_pool.register_plugin(StoryTextPlugin)
